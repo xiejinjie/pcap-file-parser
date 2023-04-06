@@ -20,7 +20,7 @@ public class EthernetHandler implements ProtocolHandler{
     }
 
     @Override
-    public Frame parseFrame(byte[] buf, int offset) {
+    public Frame parseFrame(byte[] buf, int offset, int endIndex) {
         String dstMac = NetUtil.bytesToHexString(buf, offset, 6);
         String srcMac = NetUtil.bytesToHexString(buf, offset + 6, 6);
         int type = NetUtil.byteArrayToIntBigEndian(buf, offset + 12, 2);

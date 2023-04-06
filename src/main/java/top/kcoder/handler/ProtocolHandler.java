@@ -12,5 +12,5 @@ import top.kcoder.domain.Frame;
 public interface ProtocolHandler {
     Protocol protocol();
 
-    Frame parseFrame(byte[] buf, int offset);
+    Frame parseFrame(byte[] buf, int offset,  int endIndex);
 }

@@ -20,7 +20,7 @@ public class Ipv4Handler implements ProtocolHandler{
     }
 
     @Override
-    public Frame parseFrame(byte[] buf, int offset) {
+    public Frame parseFrame(byte[] buf, int offset, int endIndex) {
         int t = NetUtil.byteArrayToIntBigEndian(buf, offset, 1);
         int version = (t & 0xf0) >> 4;
         int headLen = (t & 0x0f);

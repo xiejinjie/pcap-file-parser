@@ -18,7 +18,7 @@ public class Ipv6Handler implements ProtocolHandler{
     }
 
     @Override
-    public Frame parseFrame(byte[] buf, int offset) {
+    public Frame parseFrame(byte[] buf, int offset, int endIndex) {
         return null;
     }
 }

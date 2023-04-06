@@ -9,10 +9,12 @@ public class Constant {
     public static final int TYPE_VLAN = 0x8100;
     public static final int TYPE_IPV6 = 0x86dd;
 
+    public static final int DATA_OFFSET_READ_FINISH = -1;
+
 
     public static Protocol[][] PROCESS_PIPELINE = {
             {Ethernet, LinuxSll},
             {IPv4, IPv6},
-            {TCP, UDP}
+            {TCP, UDP, ICMP}
     };
 }

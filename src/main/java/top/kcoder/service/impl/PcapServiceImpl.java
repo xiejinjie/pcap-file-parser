@@ -97,7 +97,7 @@ public class PcapServiceImpl implements IPcapService {
                 int capLen = NetUtil.byteArrayToIntLittleEndian(buf, 8, 4);
                 // PacketData
                 fis.read(buf, 0, capLen);
-                Frame frame = parseFrame(buf, linkType);
+                Frame frame = parseFrame(buf, linkType, capLen - 1);
                 PcapPacket pcapPacket = new PcapPacket();
                 pcapPacket.setFrame(frame);
                 packetList.add(pcapPacket);
@@ -113,7 +113,7 @@ public class PcapServiceImpl implements IPcapService {
         return null;
     }
 
-    private Frame parseFrame(byte[] buf, int linkType) {
+    private Frame parseFrame(byte[] buf, int linkType, int endIndex) {
         Frame res = null;
         Frame lastFrame = null;
         int dataOffset = 0;
@@ -124,7 +124,7 @@ public class PcapServiceImpl implements IPcapService {
                 logger.warn("There is no matching handler.");
                 break;
             }
-            Frame frame = handler.parseFrame(buf, dataOffset);
+            Frame frame = handler.parseFrame(buf, dataOffset, endIndex);
             dataOffset = frame.getDataOffset();
             dataType = frame.getDataType();
             if (lastFrame != null) {

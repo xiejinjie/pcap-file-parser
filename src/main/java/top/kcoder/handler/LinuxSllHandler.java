@@ -21,7 +21,7 @@ public class LinuxSllHandler implements ProtocolHandler {
     }
 
     @Override
-    public Frame parseFrame(byte[] buf, int offset) {
+    public Frame parseFrame(byte[] buf, int offset, int endIndex) {
         int type = NetUtil.byteArrayToIntBigEndian(buf, offset + 14, 2);
         LinuxSllFrame frame = new LinuxSllFrame();
         frame.setDataType(type);
