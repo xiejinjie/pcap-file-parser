@@ -18,7 +18,7 @@ public class PingTest extends BaseTest{
     private IPcapService pcapService;
 
     @Test
-    public void pingV6Test() {
+    public void pingV4Test() {
         PcapFile pcapFile = pcapService.readFile(getTestFile("data/ping-v4.pcap"));
         pcapService.print(pcapFile);
     }
